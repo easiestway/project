@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}Admin Login{% endblock %}</title>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="/bundles/sonataadmin/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/bundles/sonataadmin/bootstrap/css/bootstrap-responsive.min.css" />
+  <link rel="stylesheet" href="/bundles/easiestwaymain/css/styles.css" />
+
+  <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+  <script type="text/javascript" src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
+<body id="login" class="sonata-bc">
+<div class="container">
+
+    <div class="container-fluid">
+        {% block body %}{% endblock %}
+    </div>
+
+</div> <!-- /container -->
+<script type="text/javascript" src="/bundles/sonatajquery/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="/bundles/sonataadmin/bootstrap/js/bootstrap.min.js"></script>
+{% block javascripts %}{% endblock %}
+</body>
+</html>
+

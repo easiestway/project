@@ -1,0 +1,4 @@
+easiest_way_main:
+    resource: "@EasiestWayMainBundle/Resources/config/routing.yml"
+    prefix:   /
+

@@ -1,0 +1,7 @@
+parameters:
+#    easiest_way_main.example.class: EasiestWay\MainBundle\Example
+
+services:
+#    easiest_way_main.example:
+#        class: %easiest_way_main.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

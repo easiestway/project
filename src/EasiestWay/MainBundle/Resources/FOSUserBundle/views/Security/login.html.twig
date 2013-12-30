@@ -1,0 +1,41 @@
+{% extends "EasiestWayMainBundle::guest.html.twig" %}
+
+{% block body %}
+
+  <form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    <h2 class="form-signin-heading">Please sign in</h2>
+      <div id="pre-content">
+        {% for flashMessage in app.session.flashbag.get('error') %}
+          <div class="alert alert-error">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            {{ flashMessage|raw }}
+          </div>
+        {% endfor %}
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+          <div class="alert alert-notice">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            {{ flashMessage|raw }}
+          </div>
+        {% endfor %}
+        {% for flashMessage in app.session.flashbag.get('success') %}
+          <div class="alert alert-success">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            {{ flashMessage|raw }}
+          </div>
+        {% endfor %}
+      </div>
+    {% if error %}
+      <div class="alert alert-error">
+        {{ error }}
+      </div>
+    {% endif %}
+    <input type="text" class="input-block-level" placeholder="Username" id="username" name="_username" value="{{ last_username }}" required="required" >
+    <input type="password" class="input-block-level" id="password" name="_password" required="required" placeholder="Password">
+    <label class="checkbox">
+      <input type="checkbox" id="remember_me" name="_remember_me" value="remember-me" /> Remember me
+    </label>
+    <button class="btn btn-large btn-primary" id="_submit" name="_submit" type="submit">Sign in</button>
+  </form>
+
+{% endblock body %}

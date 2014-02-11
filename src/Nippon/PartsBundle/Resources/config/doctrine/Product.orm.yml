@@ -1,0 +1,47 @@
+Nippon\PartsBundle\Entity\Product:
+    type: entity
+    table: nippon_product
+    repositoryClass: Nippon\PartsBundle\Repository\ProductRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        original:
+            type: string
+            length: 255
+        canonical:
+            type: string
+            length: 255
+        analogue:
+            type: string
+            length: 255
+        description:
+            type: text
+        supplierId:
+            type: integer
+            column: supplier_id
+        updatedAt:
+            type: datetime
+            column: updated_at
+            gedmo:
+                timestampable:
+                    on: update
+    uniqueConstraints:
+            canonical_product_idx:
+                columns: canonical, supplier_id
+    lifecycleCallbacks: {  }
+    oneToMany:
+        depot_products:
+            cascade: ["persist"]
+            targetEntity: DepotProduct
+            mappedBy: product
+    manyToOne:
+        supplier:
+            targetEntity: Supplier
+            inversedBy: products
+            joinColumn:
+                name: supplier_id
+                referencedColumnName: id

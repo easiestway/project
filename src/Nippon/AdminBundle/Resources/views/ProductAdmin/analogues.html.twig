@@ -1,0 +1,106 @@
+{% extends base_template %}
+
+{% block title %}
+    {% if admin.id(object) is not null %}
+        {{ "title_edit"|trans({'%name%': admin.toString(object) }, 'SonataAdminBundle') }}
+    {% else %}
+        {{ "title_create"|trans({}, 'SonataAdminBundle') }}
+    {% endif %}
+{% endblock %}
+
+{% block actions %}
+    <div class="sonata-actions btn-group">
+        {% include 'SonataAdminBundle:Button:list_button.html.twig' %}
+    </div>
+{% endblock %}
+
+{% block form %}
+    <h3> {{ object }} </h3>
+
+    <table class="table table-striped">
+        <tr class="warning">
+            <td>
+                <form>
+                    <input type="hidden" value="{{ q }}" name="q">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr class="error">
+                                <td><a href="{{ path('admin_nippon_parts_product_analogues',{productId: object.id, 'q': q}) }}">{{ object }}</a></td>
+                                <td>{{ object.description }}</td>
+                                <td>&nbsp;</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for analogue in analogues %}
+                            <tr class="success">
+                                <td><a href="{{ path('admin_nippon_parts_product_analogues',{productId: analogue.id, 'q': q}) }}">{{ analogue }}</a></td>
+                                <td>{{ analogue.description }}</td>
+                                <td><button type="submit" name="exclude" value="{{ analogue.id }}" class="btn btn-small btn-danger"><i class="icon-remove"></i> {{ "btn_exclude"|trans({}, 'product') }}</button></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </form>
+            </td>
+            <td>
+                <table class="table table-striped">
+                    <thead>
+                    <tr class="info">
+                        <td>
+                            <form class="form-search">
+                                <div class="input-append">
+                                    <input type="text" value="{{ q }}" name="q" class="span6 search-query">
+                                    <button type="submit" class="btn">{{ "btn_search"|trans({}, 'product') }}</button>
+                                </div>
+                            </form>
+                        </td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% if links|length %}
+                        {% for link in links %}
+                            <tr style="border: 1px solid #ccc">
+                                <td>
+                                    <form>
+                                        <input type="hidden" value="{{ q }}" name="q">
+                                        <input type="hidden" value="{{ link['object'].id }}" name="link">
+                                        <table class="table table-bordered">
+                                            <tr class="error">
+                                                <td><a href="{{ path('admin_nippon_parts_product_analogues',{productId: link['object'].id, 'q': q}) }}">{{ link['object'] }}</a></td>
+                                                <td>{{ link['object'].description }}</td>
+
+                                                <td><button type="submit" name="connect" value="{{ link['object'].id }}" class="btn btn-small btn-primary"><i class="icon-arrow-left"></i> {{ "btn_connect"|trans({}, 'product') }}</button></td>
+
+                                            </tr>
+                                            {% for analogue in link['analogues'] %}
+                                                <tr>
+                                                    <td><a href="{{ path('admin_nippon_parts_product_analogues',{productId: analogue.id, 'q': q}) }}">{{ analogue }}</a></td>
+                                                    <td>{{ analogue.description }}</td>
+                                                    <td><button type="submit" name="connect" value="{{ analogue.id }}" class="btn btn-small btn-primary"><i class="icon-arrow-left"></i> {{ "btn_connect"|trans({}, 'product') }}</button></td>
+                                                </tr>
+                                            {% endfor %}
+                                        </table>
+                                        {% if link['analogues']|length %}
+                                            <button type="submit" class="btn btn-primary"><i class="icon-arrow-left"></i> {{ "btn_link_group"|trans({}, 'product') }}</button>
+                                        {% endif %}
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                        <tr class="error">
+                            <td>
+                                {{ "Nothing found"|trans({}, 'product') }}
+                            </td>
+                        </tr>
+                    {% endif %}
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    //тут аналоги которых пока нету
+
+
+{% endblock %}

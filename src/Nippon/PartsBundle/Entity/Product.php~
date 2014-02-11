@@ -1,0 +1,272 @@
+<?php
+
+namespace EasiestWay\NipponBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Product
+ */
+class Product
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $original;
+
+    /**
+     * @var string
+     */
+    private $canonical;
+
+    /**
+     * @var string
+     */
+    private $analogue;
+
+    /**
+     * @var string
+     */
+    private $description;
+
+    /**
+     * @var integer
+     */
+    private $supplierId;
+
+    /**
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set original
+     *
+     * @param string $original
+     * @return Product
+     */
+    public function setOriginal($original)
+    {
+        $this->original = $original;
+
+        return $this;
+    }
+
+    /**
+     * Get original
+     *
+     * @return string 
+     */
+    public function getOriginal()
+    {
+        return $this->original;
+    }
+
+    /**
+     * Set canonical
+     *
+     * @param string $canonical
+     * @return Product
+     */
+    public function setCanonical($canonical)
+    {
+        $this->canonical = $canonical;
+
+        return $this;
+    }
+
+    /**
+     * Get canonical
+     *
+     * @return string 
+     */
+    public function getCanonical()
+    {
+        return $this->canonical;
+    }
+
+    /**
+     * Set analogue
+     *
+     * @param string $analogue
+     * @return Product
+     */
+    public function setAnalogue($analogue)
+    {
+        $this->analogue = $analogue;
+
+        return $this;
+    }
+
+    /**
+     * Get analogue
+     *
+     * @return string 
+     */
+    public function getAnalogue()
+    {
+        return $this->analogue;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Product
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set supplierId
+     *
+     * @param integer $supplierId
+     * @return Product
+     */
+    public function setSupplierId($supplierId)
+    {
+        $this->supplierId = $supplierId;
+
+        return $this;
+    }
+
+    /**
+     * Get supplierId
+     *
+     * @return integer 
+     */
+    public function getSupplierId()
+    {
+        return $this->supplierId;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return Product
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $depot_products;
+
+    /**
+     * @var \EasiestWay\NipponBundle\Entity\Supplier
+     */
+    private $supplier;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->depot_products = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add depot_products
+     *
+     * @param \EasiestWay\NipponBundle\Entity\DepotProduct $depotProducts
+     * @return Product
+     */
+    public function addDepotProduct(\EasiestWay\NipponBundle\Entity\DepotProduct $depotProducts)
+    {
+        $this->depot_products[] = $depotProducts;
+
+        return $this;
+    }
+
+    /**
+     * Remove depot_products
+     *
+     * @param \EasiestWay\NipponBundle\Entity\DepotProduct $depotProducts
+     */
+    public function removeDepotProduct(\EasiestWay\NipponBundle\Entity\DepotProduct $depotProducts)
+    {
+        $this->depot_products->removeElement($depotProducts);
+    }
+
+    /**
+     * Get depot_products
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDepotProducts()
+    {
+        return $this->depot_products;
+    }
+
+    /**
+     * Set supplier
+     *
+     * @param \EasiestWay\NipponBundle\Entity\Supplier $supplier
+     * @return Product
+     */
+    public function setSupplier(\EasiestWay\NipponBundle\Entity\Supplier $supplier = null)
+    {
+        $this->supplier = $supplier;
+
+        return $this;
+    }
+
+    /**
+     * Get supplier
+     *
+     * @return \EasiestWay\NipponBundle\Entity\Supplier 
+     */
+    public function getSupplier()
+    {
+        return $this->supplier;
+    }
+
+    public function __toString() {
+        return $this->getOriginal();
+    }
+
+}

@@ -1,0 +1,41 @@
+{% extends base_template %}
+
+{% block title %}
+    {% if admin.id(object) is not null %}
+        {{ "title_edit"|trans({'%name%': admin.toString(object) }, 'SonataAdminBundle') }}
+    {% else %}
+        {{ "title_create"|trans({}, 'SonataAdminBundle') }}
+    {% endif %}
+{% endblock%}
+
+{% block actions %}
+    <div class="sonata-actions btn-group">
+        {% include 'SonataAdminBundle:Button:list_button.html.twig' %}
+    </div>
+{% endblock %}
+
+{% block form %}
+    <h3> {{ object }} / {{ data['file'] }} </h3>
+
+    {{ form_start(form, {action: url('admin_nippon_parts_depot_process', {depotId: object.id})}) }}
+
+    <input name="file" type="hidden" value="{{ data['file'] }}"/>
+    <input name="cnt" type="hidden" value="{{ data['cnt'] }}"/>
+    <input name="separator" type="hidden" value="{{ data['separator'] }}"/>
+
+    {% if form.vars.errors|length > 0 %}
+        <div class="sonata-ba-form-error">
+            {{ form_errors(form) }}
+        </div>
+    {% endif %}
+
+    <div class="tab-content">
+        {{ form_rest(form) }}
+    </div>
+
+    <div class="well well-small form-actions">
+        <input type="submit" class="btn btn-primary" name="btn_process" value="{{ 'btn_process'|trans({}, 'depot') }}">
+    </div>
+
+    {{ form_end(form) }}
+{% endblock %}

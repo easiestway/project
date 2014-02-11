@@ -1,0 +1,35 @@
+parameters:
+#    nippon_admin.example.class: Nippon\AdminBundle\Example
+
+services:
+#    nippon_admin.example:
+#        class: %nippon_admin.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    nippon.importer.product:
+        class: Nippon\AdminBundle\Importer\ProductImporter
+        arguments: [@doctrine.orm.entity_manager]
+
+    nippon.admin.supplier:
+        class: Nippon\AdminBundle\Admin\SupplierAdmin
+        arguments: [~, Nippon\PartsBundle\Entity\Supplier, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Nippon Auto, label: Suppliers}
+
+    nippon.admin.depot:
+        class: Nippon\AdminBundle\Admin\DepotAdmin
+        arguments: [~, Nippon\PartsBundle\Entity\Depot, NipponAdminBundle:DepotAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Nippon Auto, label: Depots}
+
+    nippon.admin.product:
+        class: Nippon\AdminBundle\Admin\ProductAdmin
+        arguments: [~, Nippon\PartsBundle\Entity\Product, NipponAdminBundle:ProductAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Nippon Auto, label: Products}
+
+    nippon.admin.depot_product:
+        class: Nippon\AdminBundle\Admin\DepotProductAdmin
+        arguments: [~, Nippon\PartsBundle\Entity\DepotProduct, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Nippon Auto, label: Products Avalability}

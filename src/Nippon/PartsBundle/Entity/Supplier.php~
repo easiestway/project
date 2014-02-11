@@ -1,0 +1,216 @@
+<?php
+
+namespace EasiestWay\NipponBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Supplier
+ */
+class Supplier
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $title;
+
+    /**
+     * @var integer
+     */
+    private $parentId;
+
+    /**
+     * @var boolean
+     */
+    private $isOriginal = false;
+
+    /**
+     * @var string
+     */
+    private $description = '';
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set title
+     *
+     * @param string $title
+     * @return Supplier
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+
+        return $this;
+    }
+
+    /**
+     * Get title
+     *
+     * @return string 
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * Set parentId
+     *
+     * @param integer $parentId
+     * @return Supplier
+     */
+    public function setParentId($parentId)
+    {
+        $this->parentId = $parentId;
+
+        return $this;
+    }
+
+    /**
+     * Get parentId
+     *
+     * @return integer 
+     */
+    public function getParentId()
+    {
+        return $this->parentId;
+    }
+
+    /**
+     * Set isOriginal
+     *
+     * @param boolean $isOriginal
+     * @return Supplier
+     */
+    public function setIsOriginal($isOriginal)
+    {
+        $this->isOriginal = $isOriginal;
+
+        return $this;
+    }
+
+    /**
+     * Get isOriginal
+     *
+     * @return boolean 
+     */
+    public function getIsOriginal()
+    {
+        return $this->isOriginal;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return Supplier
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $products;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->products = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add products
+     *
+     * @param \EasiestWay\NipponBundle\Entity\Product $products
+     * @return Supplier
+     */
+    public function addProduct(\EasiestWay\NipponBundle\Entity\Product $products)
+    {
+        $this->products[] = $products;
+
+        return $this;
+    }
+
+    /**
+     * Remove products
+     *
+     * @param \EasiestWay\NipponBundle\Entity\Product $products
+     */
+    public function removeProduct(\EasiestWay\NipponBundle\Entity\Product $products)
+    {
+        $this->products->removeElement($products);
+    }
+
+    /**
+     * Get products
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getProducts()
+    {
+        return $this->products;
+    }
+    /**
+     * @var \EasiestWay\NipponBundle\Entity\Supplier
+     */
+    private $parent;
+
+
+    /**
+     * Set parent
+     *
+     * @param \EasiestWay\NipponBundle\Entity\Supplier $parent
+     * @return Supplier
+     */
+    public function setParent(\EasiestWay\NipponBundle\Entity\Supplier $parent = null)
+    {
+        $this->parent = $parent;
+
+        return $this;
+    }
+
+    /**
+     * Get parent
+     *
+     * @return \EasiestWay\NipponBundle\Entity\Supplier 
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    public function __toString() {
+      return $this->getTitle();
+    }
+}

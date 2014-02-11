@@ -1,0 +1,56 @@
+Nippon\PartsBundle\Entity\Depot:
+    type: entity
+    table: nippon_depot
+    repositoryClass: Nippon\PartsBundle\Repository\DepotRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+        userTitle:
+            type: string
+            length: 255
+            column: user_title
+            nullable: true
+        currency:
+            type: string
+            length: '3'
+        delivery:
+            type: string
+            length: '10'
+        delivery2:
+            type: string
+            length: '10'
+            nullable: true
+        price1Index:
+            type: float
+            column: price1_index
+        price2Index:
+            type: float
+            column: price2_index
+        price3Index:
+            type: float
+            column: price3_index
+        isActive:
+            type: boolean
+            column: is_active
+        updatedAt:
+            type: datetime
+            column: updated_at
+            gedmo:
+                timestampable:
+                    on: update
+    uniqueConstraints:
+            canonical_depot_idx:
+                columns: title
+    lifecycleCallbacks: {  }
+    oneToMany:
+        depot_products:
+            cascade: ["persist"]
+            targetEntity: DepotProduct
+            mappedBy: depot

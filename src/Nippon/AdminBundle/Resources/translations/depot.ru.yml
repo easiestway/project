@@ -1,0 +1,22 @@
+Import: Импорт
+Depots: Склады
+Depot List: Список складов
+Depot Import: Импорт
+Depot Choose: Конфигурация
+btn_choose: Выбрать
+btn_upload: Загрузить
+btn_process: Обработать
+
+Title: Название
+User Title: Название для клиентов
+Currency: Валюта
+Delivery: Срок доставки
+Delivery2: Срок доставки2
+Price1 Index: Коэф. Цены1
+Price2 Index: Коэф. Цены2
+Price3 Index: Коэф. Цены3
+Is Active: Показывать
+Updated At: Обновлен
+
+Separator: Csv Разделитель
+File: Файл (*.csv)

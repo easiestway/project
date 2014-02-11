@@ -1,6 +1,6 @@
 EasiestWay\MainBundle\Entity\User:
     type: entity
-    table: null
+    table: main_user
     id:
         id:
             type: integer

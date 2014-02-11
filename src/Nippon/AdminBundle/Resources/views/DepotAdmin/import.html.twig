@@ -1,0 +1,60 @@
+{% extends base_template %}
+
+{% block title %}
+    {% if admin.id(object) is not null %}
+        {{ "title_edit"|trans({'%name%': admin.toString(object) }, 'SonataAdminBundle') }}
+    {% else %}
+        {{ "title_create"|trans({}, 'SonataAdminBundle') }}
+    {% endif %}
+{% endblock%}
+
+{% block actions %}
+    <div class="sonata-actions btn-group">
+        {% include 'SonataAdminBundle:Button:list_button.html.twig' %}
+    </div>
+{% endblock %}
+
+{% block form %}
+    <h3> {{ object }} </h3>
+
+    {% if files_form %}
+        {{ form_start(files_form, {action: url('admin_nippon_parts_depot_choose', {depotId: object.id})}) }}
+
+        {% if files_form.vars.errors|length > 0 %}
+            <div class="sonata-ba-form-error">
+                {{ form_errors(files_form) }}
+            </div>
+        {% endif %}
+
+        <div class="tab-content">
+            {{ form_row(files_form.file) }}
+        </div>
+
+        <div class="well well-small form-actions">
+            <input type="submit" class="btn btn-primary" name="btn_choose" value="{{ 'btn_choose'|trans({}, 'depot') }}">
+        </div>
+
+        {{ form_end(files_form) }}
+    {% else %}
+        <h3> Please upload file </h3>
+    {% endif %}
+
+    {{ form_start(form) }}
+
+    {% if form.vars.errors|length > 0 %}
+        <div class="sonata-ba-form-error">
+            {{ form_errors(form) }}
+        </div>
+    {% endif %}
+
+    <div class="tab-content">
+        {{ form_row(form.file) }}
+    </div>
+
+    <div class="well well-small form-actions">
+        <input type="submit" class="btn btn-primary" name="btn_upload" value="{{ 'btn_upload'|trans({}, 'depot') }}">
+    </div>
+
+    {{ form_end(form) }}
+
+{% endblock %}

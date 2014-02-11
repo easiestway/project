@@ -1,0 +1,41 @@
+Nippon\PartsBundle\Entity\Supplier:
+    type: entity
+    table: nippon_supplier
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+        canonical:
+            type: string
+            length: 255
+        parentId:
+            type: integer
+            column: parent_id
+            nullable: true
+        isOriginal:
+            type: boolean
+            column: is_original
+        description:
+            type: text
+            nullable: true
+    uniqueConstraints:
+            canonical_supplier_idx:
+                columns: canonical
+    lifecycleCallbacks: {  }
+    oneToMany:
+        products:
+            cascade: ["persist"]
+            targetEntity: Product
+            mappedBy: supplier
+    manyToOne:
+        parent:
+            targetEntity: Supplier
+            joinColumn:
+                name: parent_id
+                referencedColumnName: id

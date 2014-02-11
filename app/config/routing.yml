@@ -1,3 +1,11 @@
+nippon_admin:
+    resource: "@NipponAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
+nippon:
+    resource: "@NipponPartsBundle/Resources/config/routing.yml"
+    prefix:   /
+
 easiest_way_main:
     resource: "@EasiestWayMainBundle/Resources/config/routing.yml"
     prefix:   /

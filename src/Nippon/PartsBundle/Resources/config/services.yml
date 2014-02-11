@@ -1,0 +1,7 @@
+parameters:
+#    nippon.example.class: Nippon\PartsBundle\Example
+
+services:
+    nippon.utils.search:
+        class: Nippon\PartsBundle\Utils\Search
+        arguments: [@doctrine.orm.entity_manager]

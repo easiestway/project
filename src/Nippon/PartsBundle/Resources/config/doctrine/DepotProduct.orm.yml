@@ -1,0 +1,47 @@
+Nippon\PartsBundle\Entity\DepotProduct:
+    type: entity
+    table: nippon_depot_product
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        depotId:
+            type: integer
+            column: depot_id
+        productId:
+            type: integer
+            column: product_id
+        quantity:
+            type: string
+            length: '10'
+        price:
+            type: float
+        isReserved:
+            type: boolean
+            column: is_reserved
+        updatedAt:
+            type: datetime
+            column: updated_at
+            gedmo:
+                timestampable:
+                    on: update
+    uniqueConstraints:
+            canonical_depot_product_idx:
+                columns: product_id, depot_id
+    lifecycleCallbacks: {  }
+    manyToOne:
+        depot:
+            targetEntity: Depot
+            inversedBy: depot_products
+            joinColumn:
+                name: depot_id
+                referencedColumnName: id
+        product:
+            targetEntity: Product
+            inversedBy: depot_products
+            joinColumn:
+                name: product_id
+                referencedColumnName: id

@@ -10,6 +10,7 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class VehicleAdmin extends Admin
 {
+    protected $baseRoutePattern = 'vehicle';
     protected $typeManager = null;
 
     /**
@@ -80,6 +81,10 @@ class VehicleAdmin extends Admin
             ->add('endAt', 'choice', array('choices' => array_combine($years, $years), 'label' => 'Year to', 'required' => false))
             ->add('type', 'choice', array('choices' => $this->getTypeManager()->getList(), 'label' => 'Body Type'))
             ->add('description')
+            ->add('volumes', 'sonata_type_collection', array('by_reference' => false), array(
+                'edit' => 'inline',
+                'inline' => 'table'
+            ))
         ;
     }
 

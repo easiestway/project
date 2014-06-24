@@ -12,3 +12,9 @@ services:
             - {name: sonata.admin, manager_type: orm, group: Vehicle, label: Vehicle}
         calls:
             - [ setTypeManager, [@easiest_way_vehicle.type_manager]]
+
+    easiest_way_vehicle_admin.admin.volume:
+        class: EasiestWay\VehicleAdminBundle\Admin\VolumeAdmin
+        arguments: [~, EasiestWay\VehicleBundle\Entity\Volume, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Vehicle, label: Volume, show_in_dashboard: false}

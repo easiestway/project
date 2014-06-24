@@ -36,6 +36,7 @@ EasiestWay\VehicleBundle\Entity\Vehicle:
                 referencedColumnName: id
     oneToMany:
       volumes:
+        orphanRemoval: true
         cascade: ["persist"]
         targetEntity: Volume
         mappedBy: vehicle

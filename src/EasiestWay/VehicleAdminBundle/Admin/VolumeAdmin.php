@@ -8,16 +8,17 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class ManufacturerAdmin extends Admin
+class VolumeAdmin extends Admin
 {
-    protected $baseRoutePattern = 'vehicle/manufacturer';
-
+    protected $baseRoutePattern = 'vehicle/volume';
     /**
      * @param DatagridMapper $datagridMapper
      */
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
+            ->add('id')
+            ->add('vehicleId')
             ->add('title')
         ;
     }
@@ -28,6 +29,8 @@ class ManufacturerAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->add('id')
+            ->add('vehicleId')
             ->add('title')
             ->add('_action', 'actions', array(
                 'actions' => array(
@@ -55,6 +58,8 @@ class ManufacturerAdmin extends Admin
     protected function configureShowFields(ShowMapper $showMapper)
     {
         $showMapper
+            ->add('id')
+            ->add('vehicleId')
             ->add('title')
         ;
     }

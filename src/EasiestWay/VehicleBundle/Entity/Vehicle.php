@@ -218,6 +218,7 @@ class Vehicle
      */
     public function addVolume(\EasiestWay\VehicleBundle\Entity\Volume $volumes)
     {
+        $volumes->setVehicle($this);
         $this->volumes[] = $volumes;
 
         return $this;
@@ -231,6 +232,7 @@ class Vehicle
     public function removeVolume(\EasiestWay\VehicleBundle\Entity\Volume $volumes)
     {
         $this->volumes->removeElement($volumes);
+        $volumes->setVehicle(null);
     }
 
     /**

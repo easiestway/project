@@ -1,0 +1,14 @@
+services:
+    easiest_way_vehicle_admin.admin.manufacturer:
+        class: EasiestWay\VehicleAdminBundle\Admin\ManufacturerAdmin
+        arguments: [~, EasiestWay\VehicleBundle\Entity\Manufacturer, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Vehicle, label: Manufacturer}
+
+    easiest_way_vehicle_admin.admin.vehicle:
+        class: EasiestWay\VehicleAdminBundle\Admin\VehicleAdmin
+        arguments: [~, EasiestWay\VehicleBundle\Entity\Vehicle, SonataAdminBundle:CRUD]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: Vehicle, label: Vehicle}
+        calls:
+            - [ setTypeManager, [@easiest_way_vehicle.type_manager]]

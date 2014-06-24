@@ -1,3 +1,11 @@
+easiest_way_vehicle_admin:
+    resource: "@EasiestWayVehicleAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
+easiest_way_vehicle:
+    resource: "@EasiestWayVehicleBundle/Resources/config/routing.yml"
+    prefix:   /
+
 nippon_admin:
     resource: "@NipponAdminBundle/Resources/config/routing.yml"
     prefix:   /

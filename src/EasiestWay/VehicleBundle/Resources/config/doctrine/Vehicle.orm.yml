@@ -1,0 +1,41 @@
+EasiestWay\VehicleBundle\Entity\Vehicle:
+    type: entity
+    table: vehicle
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+        manufacturerId:
+            type: integer
+            column: manufacturer_id
+        startAt:
+            type: integer
+            column: start_at
+        endAt:
+            type: integer
+            column: end_at
+            nullable: true
+        type:
+            type: integer
+        description:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }
+    manyToOne:
+        manufacturer:
+            targetEntity: Manufacturer
+            inversedBy: vehicles
+            joinColumn:
+                name: manufacturer_id
+                referencedColumnName: id
+    oneToMany:
+      volumes:
+        cascade: ["persist"]
+        targetEntity: Volume
+        mappedBy: vehicle

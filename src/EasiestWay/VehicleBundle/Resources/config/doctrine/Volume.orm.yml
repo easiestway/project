@@ -1,0 +1,24 @@
+EasiestWay\VehicleBundle\Entity\Volume:
+    type: entity
+    table: vehicle_volume
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        vehicleId:
+            type: integer
+            column: vehicle_id
+        title:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }
+    manyToOne:
+        vehicle:
+            targetEntity: Vehicle
+            inversedBy: volumes
+            joinColumn:
+                name: vehicle_id
+                referencedColumnName: id

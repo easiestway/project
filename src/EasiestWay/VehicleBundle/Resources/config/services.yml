@@ -1,0 +1,6 @@
+parameters:
+    easiest_way_vehicle.type_manager.class: EasiestWay\VehicleBundle\Type\Manager
+
+services:
+    easiest_way_vehicle.type_manager:
+        class: %easiest_way_vehicle.type_manager.class%

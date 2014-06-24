@@ -1,0 +1,19 @@
+EasiestWay\VehicleBundle\Entity\Manufacturer:
+    type: entity
+    table: vehicle_manufacturer
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }
+    oneToMany:
+      vehicles:
+        cascade: ["persist"]
+        targetEntity: Vehicle
+        mappedBy: manufacturer

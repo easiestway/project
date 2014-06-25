@@ -102,4 +102,32 @@ class Manufacturer
     function __toString() {
         return $this->getTitle();
     }
+    /**
+     * @var string
+     */
+    private $country;
+
+
+    /**
+     * Set country
+     *
+     * @param string $country
+     * @return Manufacturer
+     */
+    public function setCountry($country)
+    {
+        $this->country = $country;
+
+        return $this;
+    }
+
+    /**
+     * Get country
+     *
+     * @return string 
+     */
+    public function getCountry()
+    {
+        return $this->country;
+    }
 }

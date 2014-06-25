@@ -1,0 +1,6 @@
+parameters:
+    easiest_way_car_query_api.parser.class: EasiestWay\CarQueryApiBundle\Api\Parser
+
+services:
+    easiest_way_car_query_api.parser:
+        class: %easiest_way_car_query_api.parser.class%

@@ -19,6 +19,7 @@ class ManufacturerAdmin extends Admin
     {
         $datagridMapper
             ->add('title')
+            ->add('country')
         ;
     }
 
@@ -29,6 +30,7 @@ class ManufacturerAdmin extends Admin
     {
         $listMapper
             ->add('title')
+            ->add('country')
             ->add('_action', 'actions', array(
                 'actions' => array(
                     'show' => array(),
@@ -46,6 +48,7 @@ class ManufacturerAdmin extends Admin
     {
         $formMapper
             ->add('title')
+            ->add('country')
         ;
     }
 
@@ -56,6 +59,7 @@ class ManufacturerAdmin extends Admin
     {
         $showMapper
             ->add('title')
+            ->add('country')
         ;
     }
 }

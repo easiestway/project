@@ -11,6 +11,9 @@ EasiestWay\VehicleBundle\Entity\Manufacturer:
         title:
             type: string
             length: 255
+        country:
+            type: string
+            length: 255
     lifecycleCallbacks: {  }
     oneToMany:
       vehicles:

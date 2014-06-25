@@ -1,0 +1,8 @@
+<form action="" method="post">
+    {% for make in makes %}
+        <ul>
+            <li><input type="checkbox" {% if make['parsed'] %}checked="checked"{% endif %} name="makes[{{ make['make_id'] }}]" value="{{ make['make_id'] }} }}" />{{ make['make_display'] }} : {{ make['make_id'] }} : {{ make['make_country'] }}</li>
+        </ul>
+    {% endfor %}
+        <input type="submit" value="Save"/>
+</form>

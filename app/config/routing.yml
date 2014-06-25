@@ -1,3 +1,7 @@
+easiest_way_car_query_api:
+    resource: "@EasiestWayCarQueryApiBundle/Resources/config/routing.yml"
+    prefix:   /
+
 easiest_way_vehicle_admin:
     resource: "@EasiestWayVehicleAdminBundle/Resources/config/routing.yml"
     prefix:   /

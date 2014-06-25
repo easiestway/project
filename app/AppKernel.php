@@ -28,6 +28,7 @@ class AppKernel extends Kernel
             new Nippon\AdminBundle\NipponAdminBundle(),
             new EasiestWay\VehicleBundle\EasiestWayVehicleBundle(),
             new EasiestWay\VehicleAdminBundle\EasiestWayVehicleAdminBundle(),
+            new EasiestWay\CarQueryApiBundle\EasiestWayCarQueryApiBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

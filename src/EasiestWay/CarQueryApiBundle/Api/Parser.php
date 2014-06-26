@@ -23,7 +23,7 @@ class Parser
     protected function getData($cmd, array $params = array(), $retry = 5) {
         $apiUrl = $this->apiUrl . $cmd;
         foreach ($params as $key => $value) {
-            $apiUrl .= "&{$key}={$value}";
+            $apiUrl .= "&{$key}=".urlencode($value);
         }
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_HEADER, FALSE);

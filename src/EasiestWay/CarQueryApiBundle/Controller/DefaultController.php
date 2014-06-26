@@ -10,6 +10,7 @@ class DefaultController extends Controller
 {
     public function indexAction(Request $request)
     {
+
         $root = $this->get('kernel')->getRootDir().'/../data/';
         $parser = $this->get('easiest_way_car_query_api.parser');
         $makes = $parser->getMakes(-1);

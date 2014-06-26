@@ -31,10 +31,11 @@ class Parser
         curl_setopt($ch, CURLOPT_COOKIESESSION, TRUE);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-        curl_setopt($ch, CURLOPT_URL, $apiUrl);
+        curl_setopt($ch, CURLOPT_URL, 'http://vallmond.site90.net/proxy.php?url='.rawurlencode($apiUrl));
         curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 1);
 
         $raw = curl_exec($ch);
+        $raw = preg_replace('~<.+>~','',$raw);
         $err = curl_errno($ch);
         curl_close($ch);
         if ($err > 0 || null === ($decodedResult = json_decode($raw, true))) {

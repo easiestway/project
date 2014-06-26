@@ -45,6 +45,7 @@ class DefaultController extends Controller
         $result = array();
         $parser = $this->get('easiest_way_car_query_api.parser');
         $models = $parser->getModels($id);
+        sleep(10);
 
         foreach($models as $model)
         {
@@ -54,6 +55,7 @@ class DefaultController extends Controller
                 'model' => $model['model_name'],
                 'full_results' => 1
             ));
+            sleep(10);
             $result[] = $model;
         }
         return $result;
